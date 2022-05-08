@@ -29,34 +29,16 @@
     {% endfor %}
 
   </form>
-
-
-
-
-
-    {% for new_user in new_contacts %}
+    {% for x in new_contacts %}
       <li class="card">
-          {% if new_user.complete == True %}
-            <s>{{ new_user.name }}</s>
-            <s><{{ new_user.email }}</s>
-            <s>{{ new_user.phone }}</s>
-          {% else %}
-            <form action="/update/{{new_user.id}}" method='POST'>
-              <input name="name" value="{{new_user.name}}">
-              <input name="email" value="{{new_user.email}}">
-              <input name="phone" value="{{new_user.phone}}">
+            <form action="/update/{{x.id}}" method='POST'>
+              <input name="name" value="{{x.name}}">
+              <input name="email" value="{{x.email}}">
+              <input name="phone" value="{{x.phone}}">
               <button type="submit">Editar</button>
-              <a href="/delete/{{ new_user.id }}">X</a>
-
-          {% endif %}
-        <div class="actions">
-
-          {% if new_user.complete == False %}
-            <a href="/complete/{{ new_user.id }}"></a>
-          {% endif %}
-        </form>
-        </div>
+              <a href="/delete/{{ x.id }}">X</a>
       </li>
+    </form>
     {% endfor %}
   </ul>
 
